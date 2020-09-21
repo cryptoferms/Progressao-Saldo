@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleSaldoCircular.CircularGreetingPage"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms">
+    <StackLayout Spacing="0" BackgroundColor="#160086">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="120"></RowDefinition>
+            </Grid.RowDefinitions>
+            <FlexLayout
+                Grid.Row="0"
+                Direction="Row"
+                AlignContent="Center"
+                Padding="20"
+                BackgroundColor="#ffffff"
+                >
+                <Image Source="login.png"/>
+                <Label Text="Boa tarde TESTE" Padding="10,0"
+                       TextColor="Gray"
+                       FontAttributes="Bold"
+                       VerticalTextAlignment="Center"/>
+            </FlexLayout>
+            <FlexLayout
+                Grid.Row="1"
+                Direction="Column"
+                AlignContent="Center"
+                BackgroundColor="#160086"
+                Padding="20"
+                Margin="-6">
+                <StackLayout VerticalOptions="Center" Orientation="Horizontal" Spacing="70">
+                    <Label Text="Limite Total" TextColor="White" FontSize="20" FontAttributes="Bold"/>
+                    <Label Text="Limite Disponível" FontAttributes="Bold" TextColor="White" FontSize="20"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="125" VerticalOptions="Center">
+                    <Label Text="" x:Name="saldototal" FontAttributes="Bold" FontSize="20" TextColor="White"/>
+                    <Label Text="" x:Name="saldodisponivel" FontSize="20" FontAttributes="Bold" Padding="0" TextColor="White"/>
+                </StackLayout>
+            </FlexLayout>
+            <FlexLayout
+                Grid.Row="2"
+                Direction="Row"
+                AlignContent="Center"
+                Padding="0"
+                >
+                <StackLayout Spacing="0">
+                    <skia:SKCanvasView x:Name="canvas"
+                                   PaintSurface="canvas_PaintSurface"
+                                   HorizontalOptions="FillAndExpand"
+                                   VerticalOptions="FillAndExpand"
+                                   BackgroundColor="#ffffff"/>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="Fill" VerticalOptions="Fill" BackgroundColor="White">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="#ffffff" Padding="50,0,145,0">
+                            <Label Text="Utilizado" TextColor="Black" FontSize="12"/>
+                            <Switch x:Name="sw_listToggle" IsToggled="True" 
+                                    Toggled="SwitchToggledAsync"
+                                    />
+                            <Label Text="Disponivel" TextColor="Black" FontSize="12"/>
+                        </StackLayout>
+                        <Slider x:Name="sweepAngleSlider"
+                                ValueChanged="SliderValueChanged"
+                                Minimum="0" Maximum="260"
+                                IsVisible="true"/>
+                    </StackLayout>
+                </StackLayout>
+            </FlexLayout>
+            <FlexLayout
+                Grid.Row="3"
+                Direction="Row"
+                AlignContent="Center"
+                Padding="0"
+                BackgroundColor="#160086">
+            </FlexLayout>
+        </Grid>
+    </StackLayout>
+</ContentPage>
+
+    
